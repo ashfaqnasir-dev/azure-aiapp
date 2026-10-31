@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft AI-103 Certification Exam Prep (50 Questions)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.3);
+      border-radius: 4px;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-expand { display: block !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo & Badge -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/20">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-bold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">AI-103 Practice Simulator</h1>
+            <span class="text-xs px-2 py-0.5 font-semibold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full">50 Qs</span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">Microsoft Azure AI Engineer Associate (Updated 2026 Objectives)</p>
+        </div>
+      </div>
+
+      <!-- Controls: Timer, Mode Toggle, Theme Toggle -->
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <!-- Timer -->
+        <div id="timerContainer" class="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono text-sm font-semibold border border-slate-200 dark:border-slate-700">
+          <i class="fa-regular fa-clock text-blue-500"></i>
+          <span id="timerDisplay">60:00</span>
+        </div>
+
+        <!-- Mode Toggle (Practice vs Exam) -->
+        <button id="modeToggleBtn" class="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition" title="Toggle Practice vs Exam Mode">
+          <i class="fa-solid fa-graduation-cap text-indigo-500"></i>
+          <span id="modeLabel" class="hidden md:inline">Practice Mode</span>
+        </button>
+
+        <!-- Dark/Light Mode -->
+        <button id="themeToggleBtn" class="p-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Theme">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Mobile Drawer Toggle -->
+        <button id="navDrawerBtn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+          <i class="fa-solid fa-list-ol"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- PROGRESS INDICATOR -->
+  <div class="bg-slate-200 dark:bg-slate-800 h-1.5 w-full no-print">
+    <div id="topProgressBar" class="bg-gradient-to-r from-blue-600 to-indigo-500 h-full transition-all duration-300" style="width: 2%;"></div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 flex flex-col lg:flex-row gap-6 w-full">
+    
+    <!-- LEFT / MAIN CONTENT AREA -->
+    <main class="flex-1 min-w-0 flex flex-col">
+      
+      <!-- DOMAIN FILTER & TOOLBAR -->
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm no-print">
+        <div class="flex items-center space-x-2 text-sm w-full sm:w-auto">
+          <label class="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Domain:</label>
+          <select id="domainFilter" class="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-blue-500 outline-none w-full sm:w-64">
+            <option value="ALL">All Domains (50 Questions)</option>
+            <option value="GenAI">1. Generative AI & Agentic Frameworks</option>
+            <option value="Vision">2. Azure Vision & Content Understanding</option>
+            <option value="SpeechText">3. Speech & Text Intelligence</option>
+            <option value="RAG">4. RAG & Azure AI Search Integration</option>
+            <option value="SecurityOps">5. Security, DevOps, & Evaluation</option>
+          </select>
+        </div>
+
+        <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+          <button id="flagBtn" class="flex items-center space-x-1 px-3 py-1 text-xs font-semibold rounded-lg border border-amber-300 dark:border-amber-700/60 bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 hover:bg-amber-100 transition">
+            <i class="fa-regular fa-bookmark"></i>
+            <span id="flagBtnText">Flag</span>
+          </button>
+          <button id="resetExamBtn" class="px-2.5 py-1 text-xs text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-lg transition" title="Reset All Answers">
+            <i class="fa-solid fa-arrow-rotate-left mr-1"></i>Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- QUESTION CONTAINER CARD -->
+      <div id="questionCard" class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 sm:p-7 shadow-sm flex-1 flex flex-col justify-between">
+        <!-- Content will be injected dynamically by JS -->
+      </div>
+
+      <!-- BOTTOM NAVIGATION BAR -->
+      <div class="mt-4 flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm no-print">
+        <button id="prevBtn" class="flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 transition disabled:opacity-40 disabled:cursor-not-allowed">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Previous</span>
+        </button>
+
+        <div class="flex items-center space-x-2">
+          <button id="explainBtn" class="flex items-center space-x-1.5 px-3 py-2 text-xs sm:text-sm font-medium rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 transition border border-blue-200 dark:border-blue-800">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span id="explainBtnLabel">Show Explanation</span>
+          </button>
+          <button id="finishExamBtn" class="flex items-center space-x-1.5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition">
+            <i class="fa-solid fa-square-check"></i>
+            <span>Submit Exam</span>
+          </button>
+        </div>
+
+        <button id="nextBtn" class="flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition disabled:opacity-40 disabled:cursor-not-allowed">
+          <span>Next</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR: QUESTION GRID & METRICS (DESKTOP & DRAWER) -->
+    <aside id="sideNavPanel" class="hidden lg:flex flex-col w-80 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm space-y-4 no-print flex-shrink-0">
+      
+      <!-- Stats Pill Box -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">Exam Statistics</h3>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-700/60">
+            <div id="statAnswered" class="text-lg font-extrabold text-blue-600 dark:text-blue-400">0</div>
+            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Answered</div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-700/60">
+            <div id="statFlagged" class="text-lg font-extrabold text-amber-500">0</div>
+            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Flagged</div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-700/60">
+            <div id="statRemaining" class="text-lg font-extrabold text-slate-700 dark:text-slate-300">50</div>
+            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Remaining</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Legend -->
+      <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-1 border-b border-slate-100 dark:border-slate-700 pb-2">
+        <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block mr-1"></span> Answered</span>
+        <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block mr-1"></span> Flagged</span>
+        <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full border border-slate-300 dark:border-slate-600 inline-block mr-1"></span> Blank</span>
+      </div>
+
+      <!-- 50 Question Palette Grid -->
+      <div class="flex-1 overflow-y-auto pr-1">
+        <h4 class="text-xs font-semibold text-slate-500 mb-2">Question Jump Board</h4>
+        <div id="gridPalette" class="grid grid-cols-5 gap-2">
+          <!-- Dynamically generated 1-50 buttons -->
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="pt-2 border-t border-slate-100 dark:border-slate-700 flex flex-col gap-2">
+        <button onclick="window.print()" class="w-full py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/60 rounded-lg border border-slate-200 dark:border-slate-700 transition flex items-center justify-center space-x-1">
+          <i class="fa-solid fa-print"></i>
+          <span>Print / Save as PDF</span>
+        </button>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- MODAL: RESULT SUMMARY / SCORECARD -->
+  <div id="resultModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+    <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 transform transition-all overflow-y-auto max-h-[90vh]">
+      
+      <div class="text-center">
+        <div id="scoreIconContainer" class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">
+          <!-- Dynamic check or trophy -->
+        </div>
+        <h2 id="resultTitle" class="text-2xl font-black text-slate-900 dark:text-white">Exam Completed!</h2>
+        <p id="resultSubtitle" class="text-sm text-slate-500 dark:text-slate-400 mt-1">Here is your Microsoft AI-103 benchmark evaluation.</p>
+      </div>
+
+      <!-- Score Metrics Card -->
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div class="text-xs text-slate-400 font-semibold uppercase">Passing Score</div>
+          <div class="text-lg font-bold text-slate-700 dark:text-slate-200">700 / 1000</div>
+          <div class="text-[10px] text-slate-400">(70%)</div>
+        </div>
+        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div class="text-xs text-slate-400 font-semibold uppercase">Your Score</div>
+          <div id="userScoreDisplay" class="text-xl font-extrabold text-blue-600">--</div>
+          <div id="userPercentDisplay" class="text-[10px] font-semibold text-blue-500">--%</div>
+        </div>
+        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div class="text-xs text-slate-400 font-semibold uppercase">Correct Answers</div>
+          <div id="correctCountDisplay" class="text-xl font-extrabold text-emerald-600">--</div>
+          <div class="text-[10px] text-slate-400">out of 50</div>
+        </div>
+        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div class="text-xs text-slate-400 font-semibold uppercase">Outcome</div>
+          <div id="statusBadge" class="text-sm font-extrabold mt-1">--</div>
+        </div>
+      </div>
+
+      <!-- Domain Performance Breakdown -->
+      <div class="mt-6">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Domain Competency Breakdown</h4>
+        <div id="domainBreakdownContainer" class="space-y-2 text-xs">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Modal Actions -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <button id="reviewMissedBtn" class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm bg-blue-600 hover:bg-blue-700 text-white transition text-center shadow-lg shadow-blue-600/30">
+          <i class="fa-solid fa-magnifying-glass mr-2"></i>Review All & Explanations
+        </button>
+        <button id="retakeBtn" class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition text-center">
+          <i class="fa-solid fa-rotate-right mr-2"></i>Retake Exam
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC & 50 QUESTIONS DATA -->
+  <script>
+    /* =========================================================================
+       50 CURATED MICROSOFT AI-103 CERTIFICATION EXAM QUESTIONS
+       Targeting modern Agentic AI, Content Understanding, Prompt Shields, RAG,
+       Computer Use, Storage Blob Data Reader, Multi-file mode, etc.
+       ========================================================================= */
+    const questions = [
+      {
+        id: 1,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You are designing an AI agent using Azure OpenAI and an external order lookup REST API. You must ensure that the model is strictly forced to execute the order lookup function before generating any natural language response, and client-side agent credentials must not be leaked. Which configuration should you apply?",
+        options: [
+          "Set tool_choice to 'required' and supply the client identity in the system prompt.",
+          "Set tool_choice to 'auto' with a temperature value of 0.0.",
+          "Set tool_choice to 'required' and execute the tool call server-side using managed identity credentials.",
+          "Set tool_choice to 'none' and parse the requested function name from standard completion markdown."
+        ],
+        answer: 2,
+        explanation: "Setting 'tool_choice': 'required' forces the model to call one or more tools before replying with conversational text. Performing tool execution server-side with Azure Managed Identity protects API secrets and agent identities from being exposed in client-side payloads."
+      },
+      {
+        id: 2,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "Your company processes scanned invoices that frequently feature embedded QR codes, payment barcodes, and intricate non-standard tables. You need to extract text while maintaining absolute layout fidelity and reading barcodes. Which Azure AI Document Intelligence model should you choose?",
+        options: [
+          "Prebuilt-read model (prebuilt-read)",
+          "Prebuilt-layout model (prebuilt-layout)",
+          "Prebuilt-invoice model (prebuilt-invoice) without additional features",
+          "Custom neural classification model only"
+        ],
+        answer: 1,
+        explanation: "The 'prebuilt-layout' model extracts text, tables, selection marks, and barcodes (including QR codes) while strictly preserving document structure, reading order, and bounding polygon coordinates."
+      },
+      {
+        id: 3,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "A company implements Azure AI Content Safety to protect its customer-facing agent against prompt injection attacks. They need to protect against both direct user jailbreaks and indirect prompt injection embedded inside untrusted third-party web search snippets. Which features should they configure?",
+        options: [
+          "Enable Prompt Shields for user prompts and configure Spotlighting / indirect prompt shields on third-party inputs.",
+          "Set Text Moderation threshold to Low for all 4 categories.",
+          "Apply Groundedness detection alone with Bing Search API.",
+          "Deploy a custom BERT model on Azure Container Apps to inspect incoming strings."
+        ],
+        answer: 0,
+        explanation: "Azure AI Content Safety Prompt Shields analyze direct user prompts for jailbreaks and use indirect prompt injection analysis (often reinforced by Spotlighting techniques) to distinguish trusted developer instructions from untrusted external text."
+      },
+      {
+        id: 4,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "A contact center requires ultra-low latency real-time speech transcription with interim results displayed word-by-word as callers speak. Which Azure AI Speech pattern should be implemented?",
+        options: [
+          "Batch Transcription REST API (POST /speechtotext/v3.1/transcriptions)",
+          "Speech SDK continuous recognition using the Recognizing event handler",
+          "Speech SDK single-shot recognition with RecognizeOnceAsync() in a loop",
+          "Whisper model deployment on Azure OpenAI via standard synchronous HTTP completions"
+        ],
+        answer: 1,
+        explanation: "Continuous recognition via the Azure Speech SDK provides real-time streaming speech-to-text. Listening to the `Recognizing` event gives interim hypotheses word-by-word with minimal latency, while `Recognized` gives final phrases."
+      },
+      {
+        id: 5,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "You are building an enterprise RAG system using Azure AI Search. You need to connect Azure AI Search indexers to an Azure Data Lake Gen2 storage container securely without saving shared access signature (SAS) tokens or storage account keys in the search definition. What should you configure?",
+        options: [
+          "Enable Public Access with IP whitelist on Azure Storage.",
+          "Assign Azure AI Search service system-assigned managed identity the 'Storage Blob Data Reader' role on the storage account.",
+          "Use Azure Key Vault reference with access policies containing account root keys.",
+          "Configure anonymous container read access in Storage Access Control (IAM)."
+        ],
+        answer: 1,
+        explanation: "Using Azure AI Search's Managed Identity (System-assigned or User-assigned) granted the 'Storage Blob Data Reader' RBAC role provides passwordless, secure connectivity strictly aligned with the least privilege security principle."
+      },
+      {
+        id: 6,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You are debugging an autonomous agent built with Microsoft Semantic Kernel / AutoGen that generates multi-step plans. The agent frequently fails when invoking internal database tools. You need to capture end-to-end telemetry including prompt tokens, latency, tool execution flow, and parameters. What standard should you use?",
+        options: [
+          "Custom JSON file logging to local container disk",
+          "OpenTelemetry distributed tracing integrated with Azure Application Insights",
+          "Azure Monitor Activity Log",
+          "Direct database trigger auditing"
+        ],
+        answer: 1,
+        explanation: "OpenTelemetry is the industry and Microsoft standard for instrumenting GenAI agent traces, span calls, tool invocations, and token consumption directly exported to Azure Application Insights."
+      },
+      {
+        id: 7,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "In an agentic workflow, you need the LLM to inspect an uploaded raw CSV containing 2,000,000 rows of server logs, perform numerical regressions, and output an SVG chart. Which built-in agent tool capability is specifically designed for this?",
+        options: [
+          "Bing Search Grounding",
+          "Azure AI Code Interpreter tool running in a secure sandboxed environment",
+          "Azure Content Understanding pre-built layout",
+          "Vector search with chunk size 256"
+        ],
+        answer: 1,
+        explanation: "The Code Interpreter tool executes sandboxed Python code directly, capable of loading massive files, performing statistics, and producing downloadable charts without passing all raw rows into the token context window."
+      },
+      {
+        id: 8,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "You manage CI/CD deployment of prompt templates with GitHub Actions. You want the pull request to automatically fail if prompt groundedness or coherence drops below a baseline of 4.0/5.0. What should you incorporate into the GitHub workflow?",
+        options: [
+          "Azure AI Studio Evaluation SDK baseline evaluation step that evaluates test datasets and asserts threshold metrics",
+          "SonarQube static code scanner",
+          "GitHub Dependabot alert rules",
+          "Azure Policy Guest Configuration"
+        ],
+        answer: 0,
+        explanation: "The Azure AI Evaluation SDK (or Promptflow evaluation) can be integrated into GitHub Actions to run automated evaluations (groundedness, coherence, relevance) against golden datasets and fail the PR step if scores violate SLAs."
+      },
+      {
+        id: 9,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "When deploying Azure AI resources via GitHub Actions or Azure DevOps, you need to authenticate securely to Azure without storing client secrets or certificates that expire. What identity mechanism should you configure?",
+        options: [
+          "Username and password stored in GitHub Secrets",
+          "OpenID Connect (OIDC) federated credentials with Azure Login Action",
+          "Global Admin service principal with lifetime keys",
+          "Personal Access Token (PAT) with Azure CLI"
+        ],
+        answer: 1,
+        explanation: "OIDC allows GitHub Actions / DevOps pipelines to request short-lived access tokens from Microsoft Entra ID without maintaining long-lived client secrets."
+      },
+      {
+        id: 10,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You need to automate document processing for unstructured multi-page legal contracts and generate structured outputs strictly conforming to a predefined JSON schema with specific field types (dates, parties, penalty clauses). Which Azure AI capability best fits this?",
+        options: [
+          "Azure AI Search basic keyword index",
+          "Azure AI Content Understanding with custom defined schema analyzers",
+          "Azure Custom Vision Object Detection",
+          "Speech SDK Conversation Transcriber"
+        ],
+        answer: 1,
+        explanation: "Azure AI Content Understanding provides configurable generative schema-based analyzers, converting unstructured documents, audio, and video directly into strict, custom-defined JSON representations."
+      },
+      {
+        id: 11,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "Your client application is receiving HTTP status 429 'Too Many Requests' from Azure OpenAI during peak traffic bursts. What is the recommended best practice for resilience in client code?",
+        options: [
+          "Instantly terminate the session and ask the user to refresh.",
+          "Implement exponential backoff with randomized jitter and honor the 'Retry-After' response header.",
+          "Spam consecutive requests until a 200 OK is returned.",
+          "Double the max_tokens parameter on every retry."
+        ],
+        answer: 1,
+        explanation: "Exponential backoff with jitter prevents thundering herd problems, and inspecting the HTTP 429 response header 'Retry-After' gives the exact duration the application must wait before retrying."
+      },
+      {
+        id: 12,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You want an LLM agent to search customer order history, send a confirmation email, and log telemetry simultaneously when possible. What feature in modern OpenAI/Azure OpenAI models enables this in a single inference step?",
+        options: [
+          "Parallel tool calling (multiple function calls returned in a single message)",
+          "Stream = False mode",
+          "Multi-threading prompt templates",
+          "Model Fine-Tuning"
+        ],
+        answer: 0,
+        explanation: "Parallel tool calling allows models (like GPT-4o) to recognize multiple tool execution needs simultaneously and return an array of `tool_calls` in a single response, decreasing total roundtrip latency."
+      },
+      {
+        id: 13,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You are implementing an image editing feature in an e-commerce platform. Users need to replace overcast skies in product photos with clear blue skies while keeping the foreground products completely unaltered. Which technique should you use?",
+        options: [
+          "Image Variation mode",
+          "Mask-based Image Inpainting using generative image models",
+          "Full prompt image generation from scratch",
+          "Optical Character Recognition (OCR)"
+        ],
+        answer: 1,
+        explanation: "Inpainting uses a mask image (identifying the exact sky pixels to replace) alongside an editing text prompt, preserving all unmasked foreground pixels with pixel-perfect accuracy."
+      },
+      {
+        id: 14,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "In Azure AI Foundry / Semantic Kernel, what is the key distinction between persistent memory and session context?",
+        options: [
+          "Persistent memory stores knowledge across multiple conversations and user sessions using vector stores or databases, while session context only retains ephemeral messages in the current conversation window.",
+          "Session context is saved in Azure Blob Storage forever, while persistent memory is erased after 5 minutes.",
+          "There is no difference; both refer to the system prompt token limit.",
+          "Persistent memory is only available for Whisper models."
+        ],
+        answer: 0,
+        explanation: "Session context holds recent chat turns within the active token window. Persistent memory persists cross-session preferences, user facts, and entity knowledge across long time horizons via external databases/vector stores."
+      },
+      {
+        id: 15,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "When configuring Azure AI Search for hybrid search with semantic reranking, what combines to produce the highest relevance for domain-specific queries?",
+        options: [
+          "Pure boolean keyword match",
+          "BM25 lexical search + Vector embeddings (e.g. text-embedding-3) fused via Reciprocal Rank Fusion (RRF), followed by the Azure Semantic Ranker",
+          "Single-word substring searches without stop words",
+          "Full database table scan with regex filter"
+        ],
+        answer: 1,
+        explanation: "Hybrid search executes BM25 keyword search alongside vector search, fuses the candidate lists using RRF, and applies the deep neural Semantic Ranker to re-score the top documents for maximum precision."
+      },
+      {
+        id: 16,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You need to build a custom voice assistant that recognizes medical jargon (e.g. pharmaceutical brand names and specialized anatomical terms) that standard speech-to-text misinterprets. What should you create in Azure AI Speech?",
+        options: [
+          "A Custom Speech project with domain-specific pronunciation and language text training data",
+          "A Custom Translator dictionary",
+          "A Language Understanding (LUIS) intent model",
+          "An Azure AI Search index with soundex tokens"
+        ],
+        answer: 0,
+        explanation: "Azure AI Speech Custom Speech allows you to upload domain text (transcripts, medical guides) and pronunciation files to train an acoustic/language adaptation model, referenced via a Custom Speech Endpoint/Model ID."
+      },
+      {
+        id: 17,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "When passing high-resolution documents and UI screenshots to GPT-4o vision, what setting controls whether the image is processed as a low-res 512x512 thumbnail or detailed tile crops?",
+        options: [
+          "The 'detail' parameter in image_url set to 'high' vs 'low'",
+          "The 'temperature' parameter",
+          "The 'presence_penalty' parameter",
+          "The 'seed' parameter"
+        ],
+        answer: 0,
+        explanation: "The `detail` parameter (`detail: 'high'`, `detail: 'low'`, or `detail: 'auto'`) dictates image fidelity. 'high' divides large images into 512x512 tiles for deep OCR and fine diagram comprehension."
+      },
+      {
+        id: 18,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "You are registering a custom OpenAPI 3.0 tool in Azure AI Foundry Agents. The external service requires an API key in the HTTP header 'X-API-Key'. How should this be specified in the OpenAPI specification?",
+        options: [
+          "In securitySchemes with type 'apiKey', name 'X-API-Key', and in 'header'",
+          "Hardcode the key in the path URL query string directly",
+          "Put the raw secret inside the OpenAPI 'description' field",
+          "Omit security and send it inside client user prompts"
+        ],
+        answer: 0,
+        explanation: "OpenAPI 3.0 standard defines security schemes where `type: apiKey`, `name: X-API-Key`, and `in: header` signal the agent runtime how to inject the authenticated secret securely."
+      },
+      {
+        id: 19,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "An organization wants an AI agent capable of interacting with a legacy desktop software without APIs by observing screenshots, clicking coordinates, typing text, and pressing keys. Which capability fulfills this?",
+        options: [
+          "Computer Use / OS Agent capabilities using multi-modal models trained for coordinate-based actions",
+          "Azure Speech text-to-speech SSML bookmarks",
+          "Azure Document Intelligence receipt model",
+          "Azure Translator Document API"
+        ],
+        answer: 0,
+        explanation: "Computer Use capabilities (such as Claude/GPT OS interaction models) parse UI screenshots into screen coordinates, generating mouse click, keyboard typing, and navigation actions."
+      },
+      {
+        id: 20,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "What is the primary benefit of Agentic RAG compared to standard naive RAG?",
+        options: [
+          "Agentic RAG uses lower token limits.",
+          "Agentic RAG can iteratively reformulate queries, execute multi-hop retrieval across disparate sources, self-critique retrieved contexts, and correct retrieval gaps dynamically.",
+          "Agentic RAG avoids using vector embeddings altogether.",
+          "Agentic RAG requires zero model reasoning."
+        ],
+        answer: 1,
+        explanation: "Naive RAG performs a single static query retrieve-and-read. Agentic RAG employs an LLM reasoning loop to determine if more data is needed, reformulate keywords, compare multi-document insights, and validate correctness."
+      },
+      {
+        id: 21,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "You need to monitor real-time Provisioned Throughput Unit (PTU) consumption and token usage on Azure OpenAI to identify when rate limits might be approached. Which metrics in Azure Monitor should you inspect?",
+        options: [
+          "Provisioned-managed utilization percentage and Processed prompt/completion tokens",
+          "Network Interface In/Out Bytes only",
+          "Storage blob read latency",
+          "Azure DNS query resolution count"
+        ],
+        answer: 0,
+        explanation: "Azure Monitor provides specific metrics for Azure OpenAI: `Provisioned-Managed Utilization` (PTU utilization percentage), `Processed Prompt Tokens`, and `Processed Inference Tokens`."
+      },
+      {
+        id: 22,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You need to analyze thousands of customer reviews and identify not just positive/negative tone, but specific sentiment associated with particular aspects (e.g. 'The battery life was great, but the screen cracked easily'). What Azure AI Language feature should you run?",
+        options: [
+          "Opinion Mining (Aspect-based Sentiment Analysis)",
+          "Named Entity Recognition (NER) general only",
+          "Language Identification",
+          "PII Redaction"
+        ],
+        answer: 0,
+        explanation: "Opinion Mining (part of Azure AI Language Sentiment Analysis) extracts target aspects (e.g., 'battery life', 'screen') and links them directly to descriptive opinion words and respective sentiment polarity."
+      },
+      {
+        id: 23,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You need to deploy a Computer Vision model to inspect manufacturing parts on an offline factory floor disconnected from the public internet. What is the supported deployment approach?",
+        options: [
+          "Export the trained model as an ONNX/TensorFlow container and deploy it to an edge device using Azure IoT Edge",
+          "Force an open public tunnel through company firewall",
+          "Run live API requests over satellite internet only",
+          "Manual visual inspection without AI"
+        ],
+        answer: 0,
+        explanation: "Azure AI Custom Vision models can be exported into container formats (ONNX, Dockerfile, CoreML) to run disconnected on edge gateways via Azure IoT Edge."
+      },
+      {
+        id: 24,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "In Azure AI Search, what is the role of an Indexer compared to an Index?",
+        options: [
+          "An Index is the physical storage and schema of searchable documents; an Indexer is an automated crawler that pulls data from data sources (e.g. Cosmos DB, Blob Storage) and populates the Index.",
+          "An Indexer is the search box in the UI; an Index is the Python SDK.",
+          "They are identical terms.",
+          "An Indexer is only for deleting stale records."
+        ],
+        answer: 0,
+        explanation: "The Index contains the searchable vector, text, and metadata schema. The Indexer is the scheduled crawler and pipeline that reads from data sources, applies skillsets, and writes into the index."
+      },
+      {
+        id: 25,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "Which parameter controls the randomness of responses in Azure OpenAI, where lower values make the model more deterministic and higher values make it more creative?",
+        options: [
+          "temperature",
+          "max_tokens",
+          "stop",
+          "n"
+        ],
+        answer: 0,
+        explanation: "The `temperature` parameter (ranging typically from 0 to 2) controls output randomness. 0.0 is near-deterministic (ideal for math, coding, JSON schemas), while 0.7-1.0 provides greater variety."
+      },
+      {
+        id: 26,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "You want to redact credit card numbers, Social Security numbers (SSNs), and email addresses from customer support logs before feeding them into an LLM. Which service provides pre-built redaction?",
+        options: [
+          "Azure AI Language Personally Identifiable Information (PII) detection with redaction",
+          "Azure AI Translator Text API",
+          "Azure AI Search Suggester",
+          "Azure Custom Vision"
+        ],
+        answer: 0,
+        explanation: "Azure AI Language PII detection recognizes sensitive entities and provides an automatic redaction mask (e.g., replacing credit cards with asterisks or `[REDACTED]`)."
+      },
+      {
+        id: 27,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You are building an image catalog search tool. Users want to search images using natural language sentences such as 'a golden retriever jumping over a hurdle on grass' without any manual tags having been applied. What should you generate during ingestion?",
+        options: [
+          "Multi-modal Vector Embeddings (Azure AI Vision Image Vectorize API) stored in a vector index",
+          "Standard EXIF metadata extraction only",
+          "MD5 hash of the JPEG file",
+          "Hex color palette extraction"
+        ],
+        answer: 0,
+        explanation: "Azure AI Vision multi-modal embeddings project images and text into the exact same vector space, enabling cross-modal text-to-image semantic search without manual tags."
+      },
+      {
+        id: 28,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "What is the primary function of Azure AI Foundry 'Prompt Flow'?",
+        options: [
+          "An interactive visual authoring and orchestration environment to build, test, evaluate, and deploy LLM applications and multi-step agent graphs",
+          "A billing calculator for token consumption",
+          "A replacement for Git version control",
+          "A hardware diagnostic tool for NVIDIA GPUs"
+        ],
+        answer: 0,
+        explanation: "Prompt Flow in Azure AI Foundry is an orchestration framework to link prompts, python scripts, tools, and LLMs into DAGs (Directed Acyclic Graphs) with built-in evaluation and tracing."
+      },
+      {
+        id: 29,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "When chunking large technical PDF documents for vector search in Azure AI Search, what is the key drawback of using an excessively small chunk size (e.g., 50 tokens)?",
+        options: [
+          "Context fragmentation occurs where sentences lose the necessary contextual meaning and semantics needed for accurate answering.",
+          "Embedding generation takes zero milliseconds.",
+          "The search index will refuse to accept the text.",
+          "The index size becomes 0 bytes."
+        ],
+        answer: 0,
+        explanation: "Very small chunk sizes isolate sentences from their surrounding paragraphs, destroying context and leading to poor retrieval relevance and hallucinations during synthesis."
+      },
+      {
+        id: 30,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You are designing an emergency notification system that broadcasts voice alerts in 12 languages. You need natural, lifelike pronunciation with customized pauses and emphasis on safety words. What format should you supply to Azure Speech Text-to-Speech?",
+        options: [
+          "Speech Synthesis Markup Language (SSML)",
+          "Plain ASCII text strings",
+          "Markdown bolding and italic tags",
+          "JSON with binary wav headers"
+        ],
+        answer: 0,
+        explanation: "SSML (Speech Synthesis Markup Language) is the W3C standard used by Azure AI Speech to control pitch, rate, pauses (`<break time='500ms'/>`), phonemes, and emphasis."
+      },
+      {
+        id: 31,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "An application requires that users can only search documents belonging to their assigned department in Azure AI Search. How should this be implemented?",
+        options: [
+          "Use Security Filters by indexing department IDs/security group claims and applying an OData `$filter` on each search query matching the user's Entra ID token",
+          "Deploy 50 completely separate search services for each user",
+          "Filter the results manually in Javascript on the client browser after fetching all results",
+          "Hardcode a master API key in client code"
+        ],
+        answer: 0,
+        explanation: "Security trimming in Azure AI Search is implemented by indexing ACLs/group claims as collection fields and adding server-side OData `$filter=departmentIds/any(d: d eq 'HR')` to search requests."
+      },
+      {
+        id: 32,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "In Semantic Kernel, what is the term for a modular package containing native code functions and semantic (prompt-based) functions that an agent can invoke?",
+        options: [
+          "Plugin",
+          "Kernel Module",
+          "Connector DLL",
+          "Webhook"
+        ],
+        answer: 0,
+        explanation: "In Microsoft Semantic Kernel, a 'Plugin' is the standard encapsulation unit that exposes both Native Functions (C#/Python code) and Semantic Functions (prompts) to the Kernel agent."
+      },
+      {
+        id: 33,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You need to classify incoming scanned tax forms as either Form W-2, Form 1099-MISC, or Form 1040 before routing them to specialized extractors. Which Azure AI Document Intelligence model should you build?",
+        options: [
+          "Custom Document Classifier model",
+          "Custom Neural extraction model",
+          "Prebuilt Business Card model",
+          "Prebuilt Currency model"
+        ],
+        answer: 0,
+        explanation: "Azure AI Document Intelligence Custom Classification models categorize multi-page documents into distinct document classes/types before triggering document-specific extraction pipelines."
+      },
+      {
+        id: 34,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You want to translate incoming customer chat messages from Spanish and Japanese into English in real-time. Which Azure service offers sentence-by-sentence text translation with custom terminology glossaries?",
+        options: [
+          "Azure AI Translator (Text Translation API)",
+          "Azure AI Bot Service alone",
+          "Azure Monitor Logs",
+          "Azure Cognitive Search indexer only"
+        ],
+        answer: 0,
+        explanation: "Azure AI Translator provides cloud-based neural machine translation and supports Custom Translator glossaries for proprietary product names and domain vocabulary."
+      },
+      {
+        id: 35,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "What does the 'top_p' (nucleus sampling) parameter accomplish in Azure OpenAI model generation?",
+        options: [
+          "It limits token candidate pool to those comprising the top cumulative probability mass p (e.g. 0.1 considers only top 10% probable tokens)",
+          "It limits the maximum tokens printed",
+          "It sets priority queuing in Azure datacenters",
+          "It forces the model to respond in uppercase letters"
+        ],
+        answer: 0,
+        explanation: "`top_p` nucleus sampling filters out tokens outside the top cumulative probability threshold. A top_p of 0.1 means only tokens comprising the top 10% probability mass are considered."
+      },
+      {
+        id: 36,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "You need to ensure that an Azure OpenAI instance cannot be reached over the public internet, and all traffic from your internal web app in a Virtual Network must stay on Microsoft's private backbone. What should you configure?",
+        options: [
+          "Azure Private Endpoint and disable public network access on the Azure OpenAI resource",
+          "Allow All Networks in resource firewall settings",
+          "Store the API key in client browser local storage",
+          "Rotate access keys every 2 hours"
+        ],
+        answer: 0,
+        explanation: "Disabling public network access and provisioning an Azure Private Endpoint assigns the Azure OpenAI service a private IP address within your VNet, eliminating public internet exposure."
+      },
+      {
+        id: 37,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "What is the purpose of Vector Quantization (such as Scalar Quantization) in large Azure AI Search indexes containing tens of millions of embedding vectors?",
+        options: [
+          "It compresses vector dimensions from full 32-bit floating point to 8-bit integers, drastically reducing memory footprint and latency with minimal loss in recall",
+          "It changes the text language to English",
+          "It deletes duplicates from SQL databases",
+          "It creates audio files from embeddings"
+        ],
+        answer: 0,
+        explanation: "Vector Quantization (scalar or binary quantization) reduces the precision of vector coordinates (e.g. FP32 to INT8), slashing RAM requirements and query latency while preserving over 95% search recall."
+      },
+      {
+        id: 38,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You are setting up face authentication for physical facility access. You must recognize authorized personnel while strictly rejecting spoofing attempts involving photos held up to cameras or smartphone screens. What technology must you enable?",
+        options: [
+          "Azure AI Face Liveness Detection",
+          "Standard bounding box face rectangle detection",
+          "Emotion recognition API",
+          "Grayscale edge filter"
+        ],
+        answer: 0,
+        explanation: "Azure AI Face Liveness Detection analyzes real-time video/selfie feeds to verify if the subject is a live, physically present human, defending against spoofing (printed photos, digital screens, 3D masks)."
+      },
+      {
+        id: 39,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You are configuring a RAG pipeline and notice that the model frequently makes assertions not present in the retrieved reference documents. In Azure AI evaluation terminology, which metric specifically measures whether the output is grounded solely in the source context?",
+        options: [
+          "Groundedness",
+          "Fluency",
+          "Coherence",
+          "Equivalence"
+        ],
+        answer: 0,
+        explanation: "Groundedness measures how well the generated answers correlate to and can be substantiated by the context passages provided, directly evaluating hallucination rates."
+      },
+      {
+        id: 40,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You need to automatically identify key clauses and extract entities such as organizations, dates, and locations from raw legal briefs. Which pre-built capability in Azure AI Language should you invoke?",
+        options: [
+          "Named Entity Recognition (NER)",
+          "Text-to-Speech",
+          "Custom Speech acoustic model",
+          "Computer Vision OCR"
+        ],
+        answer: 0,
+        explanation: "Azure AI Language Named Entity Recognition (NER) identifies and categorizes unstructured text entities into predetermined categories like Person, Location, Organization, DateTime, and Quantities."
+      },
+      {
+        id: 41,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "When evaluating an Azure OpenAI application for Responsible AI compliance, what is 'Red Teaming'?",
+        options: [
+          "Simulating adversarial attacks and malicious prompts (jailbreaks, hate speech triggers, data extraction) against the AI system to expose vulnerabilities before production release",
+          "Painting the server rack hardware red in the datacenter",
+          "Running unit tests only on database connection strings",
+          "Checking if the billing threshold is exceeded"
+        ],
+        answer: 0,
+        explanation: "Red Teaming in AI involves adversarial testing where security and safety specialists simulate real-world attacks, prompt injections, and boundary violations to identify safety and security failures."
+      },
+      {
+        id: 42,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "When building an agent with AutoGen, what is the role of a 'ConversableAgent'?",
+        options: [
+          "A fundamental agent abstraction capable of sending and receiving messages, maintaining conversation state, invoking tools, and collaborating with other agents via multi-turn message passing",
+          "A database driver for SQLite",
+          "A voice synthesizer hardware chip",
+          "An HTTP router for NGINX"
+        ],
+        answer: 0,
+        explanation: "In Microsoft AutoGen, `ConversableAgent` is the core building block for conversational multi-agent systems, providing stateful message exchange, reply generation, human-in-the-loop triggers, and tool execution."
+      },
+      {
+        id: 43,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "You need to redact personally identifiable faces and license plates automatically in city traffic video footage before distributing the data to researchers. What Azure AI Vision capability assists with this?",
+        options: [
+          "Face Detection and Object Detection with automated bounding box blurring scripts",
+          "Optical Flow vector estimation only",
+          "Color histogram normalization",
+          "Custom Speech acoustic training"
+        ],
+        answer: 0,
+        explanation: "Detecting face and vehicle coordinates via Vision Object Detection allows automated image processing pipelines (e.g. OpenCV/Pillow) to apply gaussian blur or pixelation over sensitive bounding polygons."
+      },
+      {
+        id: 44,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "In Azure AI Search, what is Reciprocal Rank Fusion (RRF)?",
+        options: [
+          "An algorithm that calculates a combined relevance score by ranking positions from multiple independent search result lists (such as full-text BM25 and vector search) without requiring score normalization",
+          "A method to delete old documents from storage accounts",
+          "An encryption key rotation protocol",
+          "A machine translation dictionary"
+        ],
+        answer: 0,
+        explanation: "RRF fuses ranking positions across disparate retrieval methods (e.g., text search scores vs cosine similarity vector distances) by formula `RRF_Score = SUM(1 / (k + rank))` without complex score calibration."
+      },
+      {
+        id: 45,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You want your AI assistant to generate strict JSON output adhering to a TypeScript interface, ensuring no extra keys or missing fields occur. Which Azure OpenAI capability guarantees this?",
+        options: [
+          "Structured Outputs (response_format with type: 'json_schema' and strict: true)",
+          "Standard system prompt requesting 'Please reply in JSON'",
+          "Setting temperature = 1.9",
+          "Using Davinci-002 legacy model"
+        ],
+        answer: 0,
+        explanation: "Azure OpenAI Structured Outputs with `strict: true` and a valid JSON Schema guarantees 100% adherence to the schema, rejecting any token generation that deviates from the schema rules."
+      },
+      {
+        id: 46,
+        domain: "SecurityOps",
+        domainName: "Security, DevOps, & Evaluation",
+        type: "single",
+        question: "Which Microsoft Entra ID role is required for an application developer to test prompts and generate completions on an Azure OpenAI resource without having permissions to delete or reconfigure the resource?",
+        options: [
+          "Cognitive Services OpenAI User",
+          "Cognitive Services OpenAI Contributor",
+          "Owner",
+          "Reader only"
+        ],
+        answer: 0,
+        explanation: "The 'Cognitive Services OpenAI User' role grants read and data plane access to invoke completions and chat endpoints without granting rights to modify, delete, or manage deployments."
+      },
+      {
+        id: 47,
+        domain: "SpeechText",
+        domainName: "Speech & Text Intelligence",
+        type: "single",
+        question: "You need to transcribe multi-party conference room meetings and have the transcript attribute each spoken sentence to the specific participant (Speaker 1, Speaker 2, etc.). What technique is this?",
+        options: [
+          "Speaker Diarization",
+          "Phonetic alignment",
+          "Audio normalizer compression",
+          "Noise gate filtering"
+        ],
+        answer: 0,
+        explanation: "Speaker Diarization is the process of partitioning an audio stream into homogeneous segments according to individual speaker identities ('who spoke when')."
+      },
+      {
+        id: 48,
+        domain: "Vision",
+        domainName: "Azure Vision & Content Understanding",
+        type: "single",
+        question: "Your team is building an app to read street signs and store names from handheld smartphone photos taken at awkward angles with glare. Which service provides the highest accuracy for reading curved and rotated text in natural scenes?",
+        options: [
+          "Azure AI Vision Read OCR API",
+          "Standard Barcode Reader",
+          "Custom Vision classification without bounding boxes",
+          "Azure Speech synthesis"
+        ],
+        answer: 0,
+        explanation: "The Azure AI Vision Read OCR engine is specifically trained for embedded text in natural scene images, distorted orientations, multi-language signs, and varying light conditions."
+      },
+      {
+        id: 49,
+        domain: "RAG",
+        domainName: "RAG & Azure AI Search Integration",
+        type: "single",
+        question: "What is the primary function of the Semantic Ranker in Azure AI Search?",
+        options: [
+          "It uses deep learning models adapted from Bing to re-rank the top 50 search results based on semantic intent and contextual understanding, providing semantic captions and answers",
+          "It converts JPG images into PNG files",
+          "It generates synthetic vector embeddings for empty documents",
+          "It compresses the search index hard drive storage"
+        ],
+        answer: 0,
+        explanation: "The Azure AI Search Semantic Ranker applies Microsoft's large cross-encoder models over the top 50 initial results to evaluate semantic relevance, extract text highlights, and synthesize direct answers."
+      },
+      {
+        id: 50,
+        domain: "GenAI",
+        domainName: "Generative AI & Agentic Frameworks",
+        type: "single",
+        question: "You are designing an autonomous multi-agent software engineering team. One agent writes code, a second agent runs unit tests, and a third agent reviews code quality. What architectural pattern does this represent?",
+        options: [
+          "Multi-Agent Collaboration with specialized agent roles and orchestrated handoffs",
+          "Single-shot prompt engineering",
+          "Monolithic batch processing",
+          "Client-side local storage caching"
+        ],
+        answer: 0,
+        explanation: "Specialized multi-agent patterns decompose complex software tasks into discrete personas (Coder, Tester, Reviewer) coordinating via message passing and tool handoffs."
+      }
+    ];
+
+    /* =========================================================================
+       APPLICATION STATE
+       ========================================================================= */
+    let currentIdx = 0;
+    let userAnswers = {}; // { questionId: selectedIndex }
+    let flaggedQuestions = new Set();
+    let practiceMode = true; // Practice Mode (immediate feedback) vs Exam Mode (blind)
+    let filteredList = [...questions];
+    let examTimeSeconds = 60 * 60; // 60 minutes
+    let timerInterval = null;
+    let examSubmitted = false;
+
+    // DOM Elements
+    const questionCard = document.getElementById('questionCard');
+    const gridPalette = document.getElementById('gridPalette');
+    const topProgressBar = document.getElementById('topProgressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const explainBtn = document.getElementById('explainBtn');
+    const finishExamBtn = document.getElementById('finishExamBtn');
+    const flagBtn = document.getElementById('flagBtn');
+    const flagBtnText = document.getElementById('flagBtnText');
+    const domainFilter = document.getElementById('domainFilter');
+    const modeToggleBtn = document.getElementById('modeToggleBtn');
+    const modeLabel = document.getElementById('modeLabel');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const resetExamBtn = document.getElementById('resetExamBtn');
+    const navDrawerBtn = document.getElementById('navDrawerBtn');
+    const sideNavPanel = document.getElementById('sideNavPanel');
+
+    // Stats
+    const statAnswered = document.getElementById('statAnswered');
+    const statFlagged = document.getElementById('statFlagged');
+    const statRemaining = document.getElementById('statRemaining');
+
+    // Modal
+    const resultModal = document.getElementById('resultModal');
+    const userScoreDisplay = document.getElementById('userScoreDisplay');
+    const userPercentDisplay = document.getElementById('userPercentDisplay');
+    const correctCountDisplay = document.getElementById('correctCountDisplay');
+    const statusBadge = document.getElementById('statusBadge');
+    const scoreIconContainer = document.getElementById('scoreIconContainer');
+    const domainBreakdownContainer = document.getElementById('domainBreakdownContainer');
+    const reviewMissedBtn = document.getElementById('reviewMissedBtn');
+    const retakeBtn = document.getElementById('retakeBtn');
+
+    /* =========================================================================
+       INITIALIZATION & EVENT HANDLERS
+       ========================================================================= */
+    function init() {
+      // Dark mode detection
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      }
+
+      startTimer();
+      renderGridPalette();
+      renderQuestion();
+      updateStats();
+
+      // Listeners
+      themeToggleBtn.addEventListener('click', toggleTheme);
+      modeToggleBtn.addEventListener('click', toggleMode);
+      domainFilter.addEventListener('change', handleDomainFilter);
+      flagBtn.addEventListener('click', toggleFlag);
+      prevBtn.addEventListener('click', () => navigate(-1));
+      nextBtn.addEventListener('click', () => navigate(1));
+      explainBtn.addEventListener('click', toggleExplanation);
+      finishExamBtn.addEventListener('click', submitExam);
+      resetExamBtn.addEventListener('click', resetAll);
+      reviewMissedBtn.addEventListener('click', () => {
+        resultModal.classList.add('hidden');
+        practiceMode = true;
+        modeLabel.textContent = "Practice Mode";
+        renderQuestion();
+      });
+      retakeBtn.addEventListener('click', () => {
+        resultModal.classList.add('hidden');
+        resetAll();
+      });
+      navDrawerBtn.addEventListener('click', () => {
+        sideNavPanel.classList.toggle('hidden');
+        sideNavPanel.classList.toggle('fixed');
+        sideNavPanel.classList.toggle('inset-y-0');
+        sideNavPanel.classList.toggle('right-0');
+        sideNavPanel.classList.toggle('z-50');
+      });
+    }
+
+    /* =========================================================================
+       TIMER CONTROLLER
+       ========================================================================= */
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (examTimeSeconds <= 0) {
+          clearInterval(timerInterval);
+          submitExam();
+          return;
+        }
+        examTimeSeconds--;
+        const mins = Math.floor(examTimeSeconds / 60);
+        const secs = examTimeSeconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    /* =========================================================================
+       RENDER CURRENT QUESTION
+       ========================================================================= */
+    function renderQuestion() {
+      if (filteredList.length === 0) {
+        questionCard.innerHTML = `<div class="p-8 text-center text-slate-400">No questions found in this category.</div>`;
+        return;
+      }
+
+      const q = filteredList[currentIdx];
+      const isAnswered = userAnswers.hasOwnProperty(q.id);
+      const selectedOption = userAnswers[q.id];
+      const isFlagged = flaggedQuestions.has(q.id);
+
+      // Update flag button UI
+      if (isFlagged) {
+        flagBtn.classList.remove('bg-amber-50', 'text-amber-700', 'dark:bg-amber-950/30');
+        flagBtn.classList.add('bg-amber-500', 'text-white');
+        flagBtnText.textContent = "Flagged";
+      } else {
+        flagBtn.classList.add('bg-amber-50', 'text-amber-700', 'dark:bg-amber-950/30');
+        flagBtn.classList.remove('bg-amber-500', 'text-white');
+        flagBtnText.textContent = "Flag";
+      }
+
+      // Update Progress
+      const progressPercent = ((currentIdx + 1) / filteredList.length) * 100;
+      topProgressBar.style.width = `${progressPercent}%`;
+
+      // Build options HTML
+      let optionsHTML = '';
+      const optionLetters = ['A', 'B', 'C', 'D'];
+
+      q.options.forEach((optText, optIdx) => {
+        let btnStyles = "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/40 text-slate-700 dark:text-slate-200 hover:border-blue-400 dark:hover:border-blue-600";
+        let badgeStyles = "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+        let iconMarkup = "";
+
+        if (isAnswered) {
+          if (practiceMode || examSubmitted) {
+            // Reveal correctness
+            if (optIdx === q.answer) {
+              btnStyles = "border-emerald-500 bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 font-medium ring-2 ring-emerald-500/30";
+              badgeStyles = "bg-emerald-600 text-white font-bold";
+              iconMarkup = `<i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 text-lg ml-auto"></i>`;
+            } else if (optIdx === selectedOption) {
+              btnStyles = "border-rose-500 bg-rose-50/70 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 ring-2 ring-rose-500/30";
+              badgeStyles = "bg-rose-600 text-white font-bold";
+              iconMarkup = `<i class="fa-solid fa-circle-xmark text-rose-500 text-lg ml-auto"></i>`;
+            } else {
+              btnStyles = "opacity-60 border-slate-200 dark:border-slate-700 text-slate-500";
+            }
+          } else {
+            // Exam mode: only highlight what user selected
+            if (optIdx === selectedOption) {
+              btnStyles = "border-blue-600 bg-blue-50/70 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 font-semibold ring-2 ring-blue-500/40";
+              badgeStyles = "bg-blue-600 text-white";
+              iconMarkup = `<i class="fa-solid fa-check text-blue-600 dark:text-blue-400 text-lg ml-auto"></i>`;
+            }
+          }
+        }
+
+        optionsHTML += `
+          <button onclick="handleOptionSelect(${q.id}, ${optIdx})" class="w-full text-left p-4 rounded-xl border ${btnStyles} transition-all duration-150 flex items-start space-x-3.5 group">
+            <span class="w-7 h-7 rounded-lg ${badgeStyles} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 group-hover:scale-105 transition">
+              ${optionLetters[optIdx]}
+            </span>
+            <span class="text-sm sm:text-base leading-relaxed flex-1">${optText}</span>
+            ${iconMarkup}
+          </button>
+        `;
+      });
+
+      // Show/Hide Explanation block
+      let explanationBlock = '';
+      if ((practiceMode && isAnswered) || examSubmitted) {
+        explanationBlock = `
+          <div id="explanationContent" class="mt-6 p-5 rounded-2xl bg-blue-50/80 dark:bg-slate-900/90 border border-blue-200/80 dark:border-blue-900/60 transition-all">
+            <div class="flex items-center space-x-2 text-blue-800 dark:text-blue-300 font-bold text-sm mb-1.5">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <span>Exam Concept & Detailed Explanation</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">${q.explanation}</p>
+          </div>
+        `;
+      } else {
+        explanationBlock = `
+          <div id="explanationContent" class="hidden mt-6 p-5 rounded-2xl bg-blue-50/80 dark:bg-slate-900/90 border border-blue-200/80 dark:border-blue-900/60">
+            <div class="flex items-center space-x-2 text-blue-800 dark:text-blue-300 font-bold text-sm mb-1.5">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <span>Exam Concept & Detailed Explanation</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">${q.explanation}</p>
+          </div>
+        `;
+      }
+
+      // Render Question Card
+      questionCard.innerHTML = `
+        <div>
+          <!-- Question Header Badges -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-1 text-xs font-extrabold rounded-md bg-blue-600 text-white">Q${q.id}</span>
+              <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">${q.domainName}</span>
+            </div>
+            <span class="text-xs text-slate-400 font-mono">Index ${currentIdx + 1} of ${filteredList.length}</span>
+          </div>
+
+          <!-- Question Prompt -->
+          <h2 class="text-base sm:text-lg lg:text-xl font-bold text-slate-900 dark:text-white leading-snug tracking-tight mb-6">
+            ${q.question}
+          </h2>
+
+          <!-- Options -->
+          <div class="space-y-3">
+            ${optionsHTML}
+          </div>
+        </div>
+
+        <!-- Explanation Container -->
+        ${explanationBlock}
+      `;
+
+      // Update Nav buttons
+      prevBtn.disabled = currentIdx === 0;
+      nextBtn.disabled = currentIdx === filteredList.length - 1;
+
+      renderGridPalette();
+      updateStats();
+    }
+
+    /* =========================================================================
+       USER OPTION SELECT
+       ========================================================================= */
+    window.handleOptionSelect = function(qId, optIdx) {
+      if (examSubmitted) return; // Locked after final submission
+      userAnswers[qId] = optIdx;
+      renderQuestion();
+      updateStats();
+    };
+
+    /* =========================================================================
+       GRID PALETTE / JUMP BOARD
+       ========================================================================= */
+    function renderGridPalette() {
+      gridPalette.innerHTML = '';
+      filteredList.forEach((q, idx) => {
+        const isCurrent = idx === currentIdx;
+        const isAnswered = userAnswers.hasOwnProperty(q.id);
+        const isFlagged = flaggedQuestions.has(q.id);
+
+        let cellClass = "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700";
+
+        if (isAnswered) {
+          cellClass = "bg-blue-600 text-white border-blue-600 font-bold";
+        }
+        if (isFlagged) {
+          cellClass = "bg-amber-400 text-amber-950 border-amber-500 font-bold";
+        }
+        if (isAnswered && isFlagged) {
+          cellClass = "bg-gradient-to-tr from-blue-600 to-amber-400 text-white border-amber-500 font-bold";
+        }
+        if (isCurrent) {
+          cellClass += " ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-slate-900 font-extrabold scale-105 shadow-sm";
+        }
+
+        const btn = document.createElement('button');
+        btn.className = `h-9 w-full rounded-lg text-xs font-mono transition flex items-center justify-center border ${cellClass}`;
+        btn.textContent = q.id;
+        btn.title = `Jump to Question ${q.id}`;
+        btn.onclick = () => {
+          currentIdx = idx;
+          renderQuestion();
+        };
+        gridPalette.appendChild(btn);
+      });
+    }
+
+    /* =========================================================================
+       NAVIGATION, FLAGGING & MODE TOGGLES
+       ========================================================================= */
+    function navigate(delta) {
+      const newIdx = currentIdx + delta;
+      if (newIdx >= 0 && newIdx < filteredList.length) {
+        currentIdx = newIdx;
+        renderQuestion();
+      }
+    }
+
+    function toggleFlag() {
+      const q = filteredList[currentIdx];
+      if (flaggedQuestions.has(q.id)) {
+        flaggedQuestions.delete(q.id);
+      } else {
+        flaggedQuestions.add(q.id);
+      }
+      renderQuestion();
+    }
+
+    function toggleMode() {
+      practiceMode = !practiceMode;
+      modeLabel.textContent = practiceMode ? "Practice Mode" : "Exam Mode";
+      renderQuestion();
+    }
+
+    function toggleExplanation() {
+      const exp = document.getElementById('explanationContent');
+      if (exp) {
+        exp.classList.toggle('hidden');
+      }
+    }
+
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    }
+
+    function handleDomainFilter(e) {
+      const selectedDomain = e.target.value;
+      if (selectedDomain === "ALL") {
+        filteredList = [...questions];
+      } else {
+        filteredList = questions.filter(q => q.domain === selectedDomain);
+      }
+      currentIdx = 0;
+      renderQuestion();
+      renderGridPalette();
+    }
+
+    function updateStats() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      const totalFlagged = flaggedQuestions.size;
+      const totalRemaining = questions.length - totalAnswered;
+
+      statAnswered.textContent = totalAnswered;
+      statFlagged.textContent = totalFlagged;
+      statRemaining.textContent = totalRemaining;
+    }
+
+    function resetAll() {
+      if (confirm("Are you sure you want to reset your exam progress?")) {
+        userAnswers = {};
+        flaggedQuestions.clear();
+        currentIdx = 0;
+        examSubmitted = false;
+        examTimeSeconds = 60 * 60;
+        startTimer();
+        renderQuestion();
+        updateStats();
+      }
+    }
+
+    /* =========================================================================
+       SUBMIT EXAM & GENERATE SCORECARD
+       ========================================================================= */
+    function submitExam() {
+      examSubmitted = true;
+      clearInterval(timerInterval);
+
+      let correctCount = 0;
+      const domainStats = {};
+
+      questions.forEach(q => {
+        if (!domainStats[q.domainName]) {
+          domainStats[q.domainName] = { correct: 0, total: 0 };
+        }
+        domainStats[q.domainName].total++;
+
+        if (userAnswers[q.id] === q.answer) {
+          correctCount++;
+          domainStats[q.domainName].correct++;
+        }
+      });
+
+      const percentage = Math.round((correctCount / questions.length) * 100);
+      const scaledScore = Math.round((percentage / 100) * 1000);
+      const passed = scaledScore >= 700;
+
+      // Populate Modal
+      userScoreDisplay.textContent = `${scaledScore}`;
+      userPercentDisplay.textContent = `${percentage}%`;
+      correctCountDisplay.textContent = `${correctCount}`;
+
+      if (passed) {
+        statusBadge.innerHTML = `<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-extrabold text-xs">PASSED</span>`;
+        scoreIconContainer.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400";
+        scoreIconContainer.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+      } else {
+        statusBadge.innerHTML = `<span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-extrabold text-xs">NEEDS REVIEW</span>`;
+        scoreIconContainer.className = "w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400";
+        scoreIconContainer.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+      }
+
+      // Domain breakdown
+      domainBreakdownContainer.innerHTML = '';
+      Object.keys(domainStats).forEach(domName => {
+        const item = domainStats[domName];
+        const domPercent = Math.round((item.correct / item.total) * 100);
+        domainBreakdownContainer.innerHTML += `
+          <div>
+            <div class="flex justify-between font-medium text-slate-700 dark:text-slate-300 mb-1">
+              <span>${domName}</span>
+              <span>${item.correct}/${item.total} (${domPercent}%)</span>
+            </div>
+            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+              <div class="h-full ${domPercent >= 70 ? 'bg-emerald-500' : 'bg-amber-500'}" style="width: ${domPercent}%"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      resultModal.classList.remove('hidden');
+      renderQuestion();
+    }
+
+    // Start on load
+    window.onload = init;
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# 🤖 Azure AI Apps and Agents Developer Associate — Roadmap
+
+> Comprehensive roadmap for Microsoft Certified: Azure AI Apps and Agents Developer Associate.
+
+## 📚 Learning Paths
+
+| # | Learning Path | Status |
+|---|---|---|
+| 01 | [GenAI Apps in Azure](./01-genai-apps-in-azure.md) | ⏳ |
+| 02 | [AI Agents on Azure](./02-ai-agents-on-azure.md) | ⏳ |
+| 03 | [NLP Solutions in Azure](./03-nlp-solutions-in-azure.md) | ⏳ |
+| 04 | [Visual Data Insights on Azure](./04-visual-data-insights-on-azure.md) | ⏳ |
+
+---
+**Status:** 🚀 In Progress
